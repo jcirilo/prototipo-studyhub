@@ -63,7 +63,7 @@ export default function ProfessorShell() {
 
   return (
     <div className="min-h-screen bg-[#f5f5f5] text-slate-900">
-      <header className="bg-[#17a34a] shadow-sm">
+      <header className="sticky top-0 z-40 bg-[#17a34a]/95 backdrop-blur shadow-sm">
         <div className="mx-auto flex h-16 w-full max-w-[980px] items-center justify-between px-4">
           <div className="flex items-center gap-4">
             <Link to="/professor/inicio" className="flex items-center">
