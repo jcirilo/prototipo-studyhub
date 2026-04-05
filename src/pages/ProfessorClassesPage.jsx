@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import StatsOverview from "../components/StatsOverview";
 
 const classes = [
   {
@@ -30,20 +31,28 @@ const classes = [
   },
 ];
 
+const stats = [
+  {
+    title: "Turmas ativas",
+    value: "3",
+    helper: "Turmas atualmente em andamento.",
+  },
+  {
+    title: "Alunos totais",
+    value: "90",
+    helper: "Quantidade total de alunos vinculados.",
+  },
+  {
+    title: "Conteúdos ativos",
+    value: "9",
+    helper: "Materiais e atividades associados às turmas.",
+  },
+];
+
 function statusClasses(status) {
   if (status === "Ativa") return "bg-green-100 text-green-700";
   if (status === "Nova") return "bg-blue-100 text-blue-700";
   return "bg-slate-100 text-slate-700";
-}
-
-function SummaryCard({ title, value, helper }) {
-  return (
-    <article className="rounded-[16px] border border-slate-300 bg-white px-4 py-3 shadow-sm">
-      <p className="text-xs text-slate-500">{title}</p>
-      <h3 className="mt-1 text-lg font-semibold text-slate-900">{value}</h3>
-      <p className="mt-1 text-[11px] leading-tight text-slate-500">{helper}</p>
-    </article>
-  );
 }
 
 function ClassCard({ item }) {
@@ -129,22 +138,8 @@ export default function ProfessorClassesPage() {
         </button>
       </div>
 
-      <div className="mb-5 grid grid-cols-1 gap-3 md:grid-cols-3">
-        <SummaryCard
-          title="Turmas ativas"
-          value="3"
-          helper="Turmas atualmente em andamento."
-        />
-        <SummaryCard
-          title="Alunos totais"
-          value="90"
-          helper="Quantidade total de alunos vinculados."
-        />
-        <SummaryCard
-          title="Conteúdos ativos"
-          value="9"
-          helper="Materiais e atividades associados às turmas."
-        />
+      <div className="mb-5">
+        <StatsOverview items={stats} />
       </div>
 
       <div className="space-y-3">

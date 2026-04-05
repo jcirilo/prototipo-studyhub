@@ -1,3 +1,5 @@
+import StatsOverview from "../components/StatsOverview";
+
 const studyPlan = [
   {
     id: 1,
@@ -34,15 +36,23 @@ const priorities = [
   { title: "Conteúdo C", subtitle: "Banco de Dados", level: "Baixa" },
 ];
 
-function SummaryCard({ title, value, helper }) {
-  return (
-    <article className="rounded-[16px] border border-slate-300 bg-white px-4 py-3 shadow-sm">
-      <p className="text-xs text-slate-500">{title}</p>
-      <h3 className="mt-1 text-lg font-semibold text-slate-900">{value}</h3>
-      <p className="mt-1 text-[11px] leading-tight text-slate-500">{helper}</p>
-    </article>
-  );
-}
+const stats = [
+  {
+    title: "Sessões",
+    value: "5",
+    helper: "Semana atual.",
+  },
+  {
+    title: "Carga",
+    value: "7h30",
+    helper: "Tempo total.",
+  },
+  {
+    title: "Foco",
+    value: "ED",
+    helper: "Disciplina principal.",
+  },
+];
 
 function statusClasses(status) {
   return status === "Hoje"
@@ -155,10 +165,8 @@ export default function PlanningPage() {
         </p>
       </div>
 
-      <div className="mb-5 grid grid-cols-1 gap-3 md:grid-cols-3">
-        <SummaryCard title="Sessões" value="5" helper="Semana atual" />
-        <SummaryCard title="Carga" value="7h30" helper="Tempo total" />
-        <SummaryCard title="Foco" value="ED" helper="Disciplina principal" />
+      <div className="mb-5">
+        <StatsOverview items={stats} />
       </div>
 
       <div className="grid gap-4 lg:grid-cols-[1.4fr_0.9fr]">

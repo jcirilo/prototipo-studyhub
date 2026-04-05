@@ -1,3 +1,5 @@
+import StatsOverview from "../components/StatsOverview";
+
 const generationHistory = [
   {
     id: 1,
@@ -57,6 +59,24 @@ const pendingQuestions = [
   },
 ];
 
+const stats = [
+  {
+    title: "Pendentes de revisão",
+    value: "2",
+    helper: "Questões aguardando validação.",
+  },
+  {
+    title: "Aprovadas",
+    value: "1",
+    helper: "Questões já prontas para o uso.",
+  },
+  {
+    title: "Gerações recentes",
+    value: "3",
+    helper: "Execuções recentes do gerador.",
+  },
+];
+
 function statusClasses(status) {
   if (status === "Aprovada") return "bg-green-100 text-green-700";
   if (status === "Pendente") return "bg-yellow-100 text-yellow-700";
@@ -76,16 +96,6 @@ function difficultyClasses(level) {
   if (level === "Média") return "bg-yellow-100 text-yellow-700";
   if (level === "Baixa") return "bg-green-100 text-green-700";
   return "bg-slate-100 text-slate-700";
-}
-
-function SummaryCard({ title, value, helper }) {
-  return (
-    <article className="rounded-[16px] border border-slate-300 bg-white px-4 py-3 shadow-sm">
-      <p className="text-xs text-slate-500">{title}</p>
-      <h3 className="mt-1 text-lg font-semibold text-slate-900">{value}</h3>
-      <p className="mt-1 text-[11px] leading-tight text-slate-500">{helper}</p>
-    </article>
-  );
 }
 
 function GeneratorCard() {
@@ -296,22 +306,8 @@ export default function ProfessorQuestionsPage() {
         </p>
       </div>
 
-      <div className="mb-5 grid grid-cols-1 gap-3 md:grid-cols-3">
-        <SummaryCard
-          title="Pendentes de revisão"
-          value="2"
-          helper="Questões aguardando validação."
-        />
-        <SummaryCard
-          title="Aprovadas"
-          value="1"
-          helper="Questões já prontas para uso."
-        />
-        <SummaryCard
-          title="Gerações recentes"
-          value="3"
-          helper="Execuções recentes do gerador."
-        />
+      <div className="mb-5">
+        <StatsOverview items={stats} />
       </div>
 
       <div className="mb-5">

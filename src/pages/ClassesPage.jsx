@@ -1,3 +1,5 @@
+import StatsOverview from "../components/StatsOverview";
+
 const classes = [
   {
     id: 1,
@@ -25,6 +27,24 @@ const classes = [
   },
 ];
 
+const stats = [
+  {
+    title: "Turmas ativas",
+    value: "3",
+    helper: "Turmas atualmente em andamento.",
+  },
+  {
+    title: "Professores",
+    value: "3",
+    helper: "Docentes vinculados às disciplinas atuais.",
+  },
+  {
+    title: "Conteúdos recentes",
+    value: "9",
+    helper: "Materiais e módulos associados às turmas.",
+  },
+];
+
 function statusClasses(status) {
   if (status === "Em andamento") {
     return "bg-green-100 text-green-700";
@@ -35,16 +55,6 @@ function statusClasses(status) {
   }
 
   return "bg-slate-100 text-slate-700";
-}
-
-function SummaryCard({ title, value, helper }) {
-  return (
-    <article className="rounded-[16px] border border-slate-300 bg-white px-4 py-3 shadow-sm">
-      <p className="text-xs text-slate-500">{title}</p>
-      <h3 className="mt-1 text-lg font-semibold text-slate-900">{value}</h3>
-      <p className="mt-1 text-[11px] leading-tight text-slate-500">{helper}</p>
-    </article>
-  );
 }
 
 function ClassCard({ item }) {
@@ -103,22 +113,8 @@ export default function ClassesPage() {
         </p>
       </div>
 
-    <div className="mb-5 grid grid-cols-1 gap-3 md:grid-cols-3">
-        <SummaryCard
-          title="Turmas ativas"
-          value="3"
-          helper="Quantidade fictícia de turmas em andamento."
-        />
-        <SummaryCard
-          title="Professores"
-          value="3"
-          helper="Docentes vinculados às disciplinas atuais."
-        />
-        <SummaryCard
-          title="Conteúdos recentes"
-          value="9"
-          helper="Materiais e módulos associados às turmas."
-        />
+      <div className="mb-5">
+        <StatsOverview items={stats} />
       </div>
 
       <div className="space-y-5">

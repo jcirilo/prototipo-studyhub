@@ -1,3 +1,5 @@
+import StatsOverview from "../components/StatsOverview";
+
 const classPerformance = [
   { name: "Estruturas de Dados", value: 81 },
   { name: "Banco de Dados", value: 74 },
@@ -26,20 +28,28 @@ const difficultyTopics = [
   { topic: "Conteúdo A", className: "CI303", level: "Baixa" },
 ];
 
+const stats = [
+  {
+    title: "Média geral",
+    value: "80%",
+    helper: "Aproveitamento médio das turmas.",
+  },
+  {
+    title: "Taxa de envio",
+    value: "76%",
+    helper: "Participação média nas atividades.",
+  },
+  {
+    title: "Tópicos críticos",
+    value: "3",
+    helper: "Assuntos com maior necessidade de reforço",
+  },
+];
+
 function levelClasses(level) {
   if (level === "Alta") return "bg-red-100 text-red-700";
   if (level === "Média") return "bg-yellow-100 text-yellow-700";
   return "bg-green-100 text-green-700";
-}
-
-function StatCard({ title, value, helper }) {
-  return (
-    <article className="rounded-[16px] border border-slate-300 bg-white px-4 py-3 shadow-sm">
-      <p className="text-xs text-slate-500">{title}</p>
-      <h3 className="mt-1 text-lg font-semibold text-slate-900">{value}</h3>
-      <p className="mt-1 text-[11px] leading-tight text-slate-500">{helper}</p>
-    </article>
-  );
 }
 
 function ClassBarChart() {
@@ -205,22 +215,8 @@ export default function ProfessorPerformancePage() {
         </p>
       </div>
 
-      <div className="mb-5 grid grid-cols-1 gap-3 md:grid-cols-3">
-        <StatCard
-          title="Média geral"
-          value="80%"
-          helper="Aproveitamento médio das turmas."
-        />
-        <StatCard
-          title="Taxa de envio"
-          value="76%"
-          helper="Participação média nas atividades."
-        />
-        <StatCard
-          title="Tópicos críticos"
-          value="3"
-          helper="Assuntos com maior necessidade de reforço."
-        />
+      <div className="mb-5">
+        <StatsOverview items={stats} />
       </div>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">

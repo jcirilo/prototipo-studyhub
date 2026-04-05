@@ -1,3 +1,5 @@
+import StatsOverview from "../components/StatsOverview";
+
 const activities = [
   {
     id: 1,
@@ -37,6 +39,24 @@ const activities = [
   },
 ];
 
+const stats = [
+  {
+    title: "Atividades abertas",
+    value: "2",
+    helper: "Disponíveis para resposta dos alunos.",
+  },
+  {
+    title: "Encerradas",
+    value: "1",
+    helper: "Atividades já finalizadas.",
+  },
+  {
+    title: "Taxa média de envio",
+    value: "76%",
+    helper: "Participação atual dos alunos.",
+  },
+];
+
 function statusClasses(status) {
   if (status === "Aberta") return "bg-green-100 text-green-700";
   if (status === "Encerrada") return "bg-slate-100 text-slate-700";
@@ -49,16 +69,6 @@ function typeClasses(type) {
   if (type === "Lista") return "bg-violet-100 text-violet-700";
   if (type === "Exercício") return "bg-green-100 text-green-700";
   return "bg-slate-100 text-slate-700";
-}
-
-function SummaryCard({ title, value, helper }) {
-  return (
-    <article className="rounded-[16px] border border-slate-300 bg-white px-4 py-3 shadow-sm">
-      <p className="text-xs text-slate-500">{title}</p>
-      <h3 className="mt-1 text-lg font-semibold text-slate-900">{value}</h3>
-      <p className="mt-1 text-[11px] leading-tight text-slate-500">{helper}</p>
-    </article>
-  );
 }
 
 function CreateActivityCard() {
@@ -255,22 +265,8 @@ export default function ProfessorActivitiesPage() {
         </p>
       </div>
 
-      <div className="mb-5 grid grid-cols-1 gap-3 md:grid-cols-3">
-        <SummaryCard
-          title="Atividades abertas"
-          value="2"
-          helper="Disponíveis para resposta dos alunos."
-        />
-        <SummaryCard
-          title="Encerradas"
-          value="1"
-          helper="Atividades já finalizadas."
-        />
-        <SummaryCard
-          title="Taxa média de envio"
-          value="76%"
-          helper="Participação atual dos alunos."
-        />
+      <div className="mb-5">
+        <StatsOverview items={stats} />
       </div>
 
       <div className="mb-5">

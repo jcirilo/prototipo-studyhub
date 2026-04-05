@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import StatsOverview from "../components/StatsOverview";
 
 const activities = [
   {
@@ -40,6 +41,24 @@ const activities = [
     dueDate: "18/04/2026",
     status: "Pendente",
     progress: 80,
+  },
+];
+
+const stats = [
+  {
+    title: "Pendentes",
+    value: "4",
+    helper: "Atividades aguardando resposta.",
+  },
+  {
+    title: "Prazo mais próximo",
+    value: "12/04",
+    helper: "Próxima entrega cadastrada.",
+  },
+  {
+    title: "Disciplinas",
+    value: "4",
+    helper: "Componentes com atividades ativas",
   },
 ];
 
@@ -138,30 +157,8 @@ export default function PendingActivitiesPage() {
         </Link>
       </div>
 
-      <div className="mb-5 grid grid-cols-1 gap-3 md:grid-cols-3">
-        <article className="rounded-[16px] border border-slate-300 bg-white px-4 py-3 shadow-sm">
-          <p className="text-xs text-slate-500">Pendentes</p>
-          <h3 className="mt-1 text-lg font-semibold text-slate-900">4</h3>
-          <p className="mt-1 text-[11px] leading-tight text-slate-500">
-            Atividades aguardando resposta.
-          </p>
-        </article>
-
-        <article className="rounded-[16px] border border-slate-300 bg-white px-4 py-3 shadow-sm">
-          <p className="text-xs text-slate-500">Prazo mais próximo</p>
-          <h3 className="mt-1 text-lg font-semibold text-slate-900">12/04</h3>
-          <p className="mt-1 text-[11px] leading-tight text-slate-500">
-            Próxima entrega cadastrada.
-          </p>
-        </article>
-
-        <article className="rounded-[16px] border border-slate-300 bg-white px-4 py-3 shadow-sm">
-          <p className="text-xs text-slate-500">Disciplinas</p>
-          <h3 className="mt-1 text-lg font-semibold text-slate-900">4</h3>
-          <p className="mt-1 text-[11px] leading-tight text-slate-500">
-            Componentes com atividades ativas.
-          </p>
-        </article>
+      <div className="mb-5">
+        <StatsOverview items={stats} />
       </div>
 
       <div className="space-y-3">

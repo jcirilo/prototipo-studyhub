@@ -1,3 +1,5 @@
+import StatsOverview from "../components/StatsOverview";
+
 const materials = [
   {
     id: 1,
@@ -34,6 +36,24 @@ const materials = [
   },
 ];
 
+const stats = [
+  {
+    title: "Materiais publicados",
+    value: "3",
+    helper: "Arquivos disponíveis para os alunos.",
+  },
+  {
+    title: "Turmas com material",
+    value: "3",
+    helper: "Quantidade total de alunos vinculados.",
+  },
+  {
+    title: "Prontos para IA",
+    value: "2",
+    helper: "Materiais aptos para geração de questões.",
+  },
+];
+
 function statusClasses(status) {
   if (status === "Publicado") return "bg-green-100 text-green-700";
   if (status === "Rascunho") return "bg-yellow-100 text-yellow-700";
@@ -46,16 +66,6 @@ function typeClasses(type) {
   if (type === "MP4") return "bg-blue-100 text-blue-700";
   if (type === "DOCX") return "bg-indigo-100 text-indigo-700";
   return "bg-slate-100 text-slate-700";
-}
-
-function SummaryCard({ title, value, helper }) {
-  return (
-    <article className="rounded-[16px] border border-slate-300 bg-white px-4 py-3 shadow-sm">
-      <p className="text-xs text-slate-500">{title}</p>
-      <h3 className="mt-1 text-lg font-semibold text-slate-900">{value}</h3>
-      <p className="mt-1 text-[11px] leading-tight text-slate-500">{helper}</p>
-    </article>
-  );
 }
 
 function UploadBox() {
@@ -190,22 +200,8 @@ export default function ProfessorMaterialsPage() {
         </div>
       </div>
 
-      <div className="mb-5 grid grid-cols-1 gap-3 md:grid-cols-3">
-        <SummaryCard
-          title="Materiais publicados"
-          value="3"
-          helper="Arquivos disponíveis para os alunos."
-        />
-        <SummaryCard
-          title="Turmas com material"
-          value="3"
-          helper="Turmas atualmente com conteúdos ativos."
-        />
-        <SummaryCard
-          title="Prontos para IA"
-          value="2"
-          helper="Materiais aptos para geração de questões."
-        />
+      <div className="mb-5">
+        <StatsOverview items={stats} />
       </div>
 
       <div className="mb-5">

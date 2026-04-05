@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import StatsOverview from "../components/StatsOverview";
 
 const completedActivities = [
   {
@@ -36,21 +37,29 @@ const completedActivities = [
   },
 ];
 
+const stats = [
+  {
+    title: "Concluídas",
+    value: "3",
+    helper: "Atividades já finalizadas no período",
+  },
+  {
+    title: "Média",
+    value: "8,4",
+    helper: "Aproveitamento médio fictício.",
+  },
+  {
+    title: "Última entrega",
+    value: "02/04",
+    helper: "Data da atividade concluída mais recente.",
+  },
+];
+
 function typeClasses(type) {
   if (type === "Questionário") return "bg-blue-100 text-blue-700";
   if (type === "Lista") return "bg-violet-100 text-violet-700";
   if (type === "Exercício") return "bg-green-100 text-green-700";
   return "bg-slate-100 text-slate-700";
-}
-
-function SummaryCard({ title, value, helper }) {
-  return (
-    <article className="rounded-[16px] border border-slate-300 bg-white px-4 py-3 shadow-sm">
-      <p className="text-xs text-slate-500">{title}</p>
-      <h3 className="mt-1 text-lg font-semibold text-slate-900">{value}</h3>
-      <p className="mt-1 text-[11px] leading-tight text-slate-500">{helper}</p>
-    </article>
-  );
 }
 
 function CompletedCard({ activity }) {
@@ -138,22 +147,8 @@ export default function CompletedActivitiesPage() {
         </Link>
       </div>
 
-      <div className="mb-5 grid grid-cols-1 gap-3 md:grid-cols-3">
-        <SummaryCard
-          title="Concluídas"
-          value="3"
-          helper="Atividades já finalizadas no período."
-        />
-        <SummaryCard
-          title="Média"
-          value="8,4"
-          helper="Aproveitamento médio fictício."
-        />
-        <SummaryCard
-          title="Última entrega"
-          value="02/04"
-          helper="Data da atividade concluída mais recente."
-        />
+      <div className="mb-5">
+        <StatsOverview items={stats} />
       </div>
 
       <div className="space-y-3">

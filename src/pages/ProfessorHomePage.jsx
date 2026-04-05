@@ -1,20 +1,4 @@
-const summary = [
-  {
-    title: "Turmas ativas",
-    value: "3",
-    helper: "Turmas atualmente em andamento",
-  },
-  {
-    title: "Atividades abertas",
-    value: "8",
-    helper: "Atividades disponíveis para alunos",
-  },
-  {
-    title: "Questões pendentes",
-    value: "12",
-    helper: "Aguardando revisão/aprovação",
-  },
-];
+import StatsOverview from "../components/StatsOverview";
 
 const classesOverview = [
   {
@@ -85,15 +69,24 @@ const planning = [
   },
 ];
 
-function SummaryCard({ title, value, helper }) {
-  return (
-    <article className="rounded-[16px] border border-slate-300 bg-white px-4 py-3 shadow-sm">
-      <p className="text-xs text-slate-500">{title}</p>
-      <h3 className="mt-1 text-lg font-semibold text-slate-900">{value}</h3>
-      <p className="mt-1 text-[11px] leading-tight text-slate-500">{helper}</p>
-    </article>
-  );
-}
+const stats = [
+  {
+    title: "Turmas ativas",
+    value: "3",
+    helper: "Turmas atualmente em andamento.",
+  },
+  {
+    title: "Atividades abertas",
+    value: "8",
+    helper: "Atividades disponíveis para alunos.",
+  },
+  {
+    title: "Questões pendentes",
+    value: "12",
+    helper: "Aguardando revisão/aprovação.",
+  },
+];
+
 
 function statusClasses(status) {
   if (status === "Bom") return "bg-green-100 text-green-700";
@@ -168,15 +161,8 @@ export default function ProfessorHomePage() {
         </p>
       </div>
 
-      <div className="mb-5 grid grid-cols-1 gap-3 md:grid-cols-3">
-        {summary.map((item) => (
-          <SummaryCard
-            key={item.title}
-            title={item.title}
-            value={item.value}
-            helper={item.helper}
-          />
-        ))}
+      <div className="mb-5">
+        <StatsOverview items={stats} />
       </div>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">

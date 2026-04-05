@@ -1,4 +1,5 @@
 import PlanningCard from "../components/PlanningCard";
+import StatsOverview from "../components/StatsOverview";
 
 const summary = [
   { title: "Pendentes", value: "4", helper: "Atividades aguardando resposta" },
@@ -93,6 +94,24 @@ const progressActivities = [
     title: "Atividade 03",
     subject: "SO",
     progress: 80,
+  },
+];
+
+const stats = [
+  {
+    title: "Pendentes",
+    value: "4",
+    helper: "Atividades aguardando resposta",
+  },
+  {
+    title: "Hoje",
+    value: "2h",
+    helper: "Carga preista de estudo",
+  },
+  {
+    title: "Média",
+    value: "8,2",
+    helper: "Desempenho geral ficitício",
   },
 ];
 
@@ -214,22 +233,6 @@ function RecommendationCard({ item }) {
   );
 }
 
-function PlanningItem({ item }) {
-  return (
-    <div className="flex items-center justify-between gap-3 rounded-[14px] border border-slate-200 bg-slate-50 px-3 py-2">
-      <div className="shrink-0">
-        <p className="text-xs font-semibold text-slate-700">{item.day}</p>
-        <p className="text-[11px] text-slate-500">{item.time}</p>
-      </div>
-
-      <div className="min-w-0 text-right">
-        <p className="text-sm font-medium text-slate-800">{item.subject}</p>
-        <p className="text-[11px] text-slate-500">{item.content}</p>
-      </div>
-    </div>
-  );
-}
-
 function ProgressItem({ item }) {
   return (
     <div className="rounded-[14px] border border-slate-200 bg-slate-50 px-3 py-2">
@@ -265,10 +268,8 @@ export default function HomePage() {
       </div>
 
 
-      <div className="mb-5 grid grid-cols-1 gap-3 md:grid-cols-3">
-        {summary.map((item) => (
-          <SummaryCard key={item.title} item={item} />
-        ))}
+      <div className="mb-5">
+        <StatsOverview items={stats} />
       </div>
 
       <div className="mb-6 grid grid-cols-1 gap-5 lg:grid-cols-2">

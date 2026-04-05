@@ -1,3 +1,5 @@
+import StatsOverview from "../components/StatsOverview";
+
 const subjectPerformance = [
   { name: "Algoritmos", value: 82 },
   { name: "ED", value: 74 },
@@ -18,15 +20,23 @@ const difficultyTopics = [
   { topic: "OSI", level: "Baixa" },
 ];
 
-function StatCard({ title, value, helper }) {
-  return (
-    <article className="rounded-[16px] border border-slate-300 bg-white px-4 py-3 shadow-sm">
-      <p className="text-xs text-slate-500">{title}</p>
-      <h3 className="text-lg font-semibold text-slate-900">{value}</h3>
-      <p className="text-[11px] text-slate-500">{helper}</p>
-    </article>
-  );
-}
+const stats = [
+  {
+    title: "Média",
+    value: "78%",
+    helper: "Geral.",
+  },
+  {
+    title: "Atividades",
+    value: "24",
+    helper: "Concluídas.",
+  },
+  {
+    title: "Horas",
+    value: "36h",
+    helper: "Total.",
+  },
+];
 
 function ProgressBarChart() {
   return (
@@ -104,10 +114,8 @@ export default function PerformancePage() {
         <p className="text-sm text-slate-600">Acompanhe sua evolução.</p>
       </div>
 
-      <div className="mb-5 grid gap-3 md:grid-cols-3">
-        <StatCard title="Média" value="78%" helper="Geral" />
-        <StatCard title="Atividades" value="24" helper="Concluídas" />
-        <StatCard title="Horas" value="36h" helper="Total" />
+      <div className="mb-5">
+        <StatsOverview items={stats} />
       </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
