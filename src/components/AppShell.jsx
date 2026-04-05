@@ -1,5 +1,6 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import logo from "../../public/logo-studyhub.png";
 
 const navItems = [
   { to: "/aluno/inicio", label: "Início" },
@@ -7,7 +8,7 @@ const navItems = [
   { to: "/aluno/turmas", label: "Turmas" },
   { to: "/aluno/desempenho", label: "Desempenho" },
   { to: "/aluno/planejamento", label: "Planejamento" },
-  // { to: "/aluno/perfil", label: "Perfil" },
+  { to: "/aluno/perfil", label: "Perfil"},
 ];
 
 function MenuIcon() {
@@ -58,7 +59,7 @@ export default function AppShell() {
           <div className="flex items-center gap-4">
             <Link to="/aluno/inicio" className="flex items-center">
               <img
-                src="/logo-studyhub.png"
+                src={logo}
                 alt="StudyHub"
                 className="h-8 w-auto object-contain"
               />

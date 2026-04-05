@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "../../public/logo-studyhub.png";
 
 export default function LoginPage() {
   return (
@@ -6,7 +7,7 @@ export default function LoginPage() {
       <div className="w-full max-w-[320px]">
         <div className="mb-4 flex justify-center">
           <img
-            src="/logo-studyhub.png"
+            src={logo}
             alt="StudyHub"
             className="h-10 w-auto object-contain"
             onError={(e) => {
