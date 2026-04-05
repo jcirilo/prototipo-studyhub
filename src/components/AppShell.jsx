@@ -1,6 +1,6 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import logo from "../../public/logo-studyhub.png";
+import logo from "../assets/logo.png";
 
 const navItems = [
   { to: "/aluno/inicio", label: "Início" },
