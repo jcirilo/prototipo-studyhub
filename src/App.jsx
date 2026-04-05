@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter , Navigate, Route, Routes } from "react-router-dom";
 import AppShell from "./components/AppShell";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
@@ -12,7 +12,7 @@ import ProfilePage from "./pages/ProfilePage";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Navigate to="/aluno/login" replace />} />
         <Route path="/aluno/login" element={<LoginPage />} />
@@ -39,6 +39,6 @@ export default function App() {
 
         <Route path="*" element={<Navigate to="/aluno/login" replace />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
